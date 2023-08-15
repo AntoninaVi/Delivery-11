@@ -24,11 +24,11 @@ const dishesRef = collection(db, 'dishes');
 // Add data to Firebase
 // addDoc(dishesRef, {
 //   image: '/assets/img-dishes/carbonara.png',
-//   title: 'greek',
+//   title: 'capicino',
 //   size: '150 g',
 //   ingredients: 'Dough, Mozzarella, Cheddar, Blue, Parmesan',
 //   price: '50 UAH',
-//   type: 'salad'
+//   type: 'drinks'
 // })
 // .then((docRef) => {
 //   console.log('Dish has been added', docRef.id);
