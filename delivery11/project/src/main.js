@@ -23,12 +23,12 @@ const dishesRef = collection(db, 'dishes');
 
 // Add data to Firebase
 // addDoc(dishesRef, {
-//   image: '/assets/img-dishes/carbonara.png',
-//   title: 'veggi maki',
+//   image: '/src/assets/img-dishes/dimare.png',
+//   title: 'Pizza Di Mare',
 //   size: '150 g',
-//   ingredients: 'Dough, Mozzarella, Cheddar, Blue, Parmesan',
-//   price: '900 UAH',
-//   type: 'sushi'
+//   ingredients: 'Dough, Mozzarella, Cheddar, Parmesan, Seafood',
+//   price: '1000 UAH',
+//   type: 'pizza'
 // })
 // .then((docRef) => {
 //   console.log('Dish has been added', docRef.id);

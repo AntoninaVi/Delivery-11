@@ -2,11 +2,28 @@
   <div class="wrapper">
     <div class="container">
       <div class="content__header">
-        <div class="content__header-basket">
+        <div
+          class="content__header-basket"
+          @mouseenter="isOrderSummaryVisible = true"
+          @mouseleave="isOrderSummaryVisible = false"
+        >
           <button class="content__header-basket-btn">
-            Basket ({{ cartTotalQuantity }})
+            Basket ({{ orderCount }})
           </button>
+          <div
+            v-if="isOrderSummaryVisible"
+            class="content__header-order-summary"
+          >
+            Total: {{ totalOrderPrice }} UAH
+            <button
+              class="content__header-order-summary-close"
+              @click="isOrderSummaryVisible = false"
+            >
+              &times;
+            </button>
+          </div>
         </div>
+
         <h1 class="content__header-title title">Popular dishes</h1>
       </div>
       <div class="content__dishes">
@@ -45,7 +62,10 @@
               </p>
               <p class="content__dishes-offers-dish-price">{{ dish.price }}</p>
             </div>
-            <button class="content__dishes-offers-dish-button"></button>
+            <button
+              class="content__dishes-offers-dish-button"
+              @click="addDishToCart(dish)"
+            ></button>
           </article>
         </div>
         <button
@@ -74,7 +94,10 @@ export default {
       showLoadMore: false,
       categories: ["Pizza", "Sushi", "Salad", "Dessert", "Drinks"],
       selectedCategory: "Pizza",
-      basket: [],
+      cart: [],
+      orderCount: 0,
+      totalOrderPrice: 0, // sum of an order
+      isOrderSummaryVisible: false,
     };
   },
   methods: {
@@ -95,9 +118,28 @@ export default {
       console.log("Chosen category", category);
       this.selectedCategory = category;
       const categoryKey = category.toLowerCase();
+      this.displayedDishes = [];
+      this.cart = []; // cart reset
       this.displayedDishes = this.dishes[categoryKey] || [];
       this.lastDisplayedIndex = this.displayedDishes.length;
       this.showLoadMore = this.displayedDishes.length > this.batchSize;
+      for (const dish of this.dishes[category] || []) {
+        if (this.displayedDishes.length < this.batchSize) {
+          this.displayedDishes.push(dish);
+        } else {
+          this.showLoadMore = true;
+          break;
+        }
+      }
+      this.lastDisplayedIndex = this.displayedDishes.length;
+    },
+    addDishToCart(dish) {
+      this.cart.push(dish);
+      this.orderCount += 1;
+
+      // update sum
+      this.totalOrderPrice += parseFloat(dish.price.replace(" UAH", "")); 
+      this.isOrderSummaryVisible = true; // show sum of an order
     },
   },
   mounted() {
@@ -134,7 +176,10 @@ export default {
 
   &__header-basket-btn {
   }
-
+  &__header-order-summary {
+  }
+  &__header-order-summary-close {
+  }
   &__header-title {
     text-align: center;
   }
