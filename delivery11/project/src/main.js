@@ -24,11 +24,11 @@ const dishesRef = collection(db, 'dishes');
 // Add data to Firebase
 // addDoc(dishesRef, {
 //   image: '/assets/img-dishes/carbonara.png',
-//   title: 'capicino',
+//   title: 'veggi maki',
 //   size: '150 g',
 //   ingredients: 'Dough, Mozzarella, Cheddar, Blue, Parmesan',
-//   price: '50 UAH',
-//   type: 'drinks'
+//   price: '900 UAH',
+//   type: 'sushi'
 // })
 // .then((docRef) => {
 //   console.log('Dish has been added', docRef.id);

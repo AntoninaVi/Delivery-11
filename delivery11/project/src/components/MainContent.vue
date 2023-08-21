@@ -3,7 +3,9 @@
     <div class="container">
       <div class="content__header">
         <div class="content__header-basket">
-          <button class="content__header-basket-btn">Basket</button>
+          <button class="content__header-basket-btn">
+            Basket ({{ cartTotalQuantity }})
+          </button>
         </div>
         <h1 class="content__header-title title">Popular dishes</h1>
       </div>
@@ -14,7 +16,9 @@
             :key="category"
             class="content__dishes-tabs-btn"
             @click="changeCategory(category)"
-          >{{ category }}</button>
+          >
+            {{ category }}
+          </button>
         </div>
         <div class="content__dishes-offers">
           <article
@@ -22,19 +26,33 @@
             :key="index"
             class="content__dishes-offers-dish"
           >
-            <img :src="dish.image" :alt="dish.title" class="content__dishes-offers-dish-img" />
+            <img
+              :src="dish.image"
+              :alt="dish.title"
+              class="content__dishes-offers-dish-img"
+            />
             <div class="content__dishes-offers-dish-content">
-              <h3 class="content__dishes-offers-dish-content-title">{{ dish.title }}</h3>
-              <p class="content__dishes-offers-dish-content-size">{{ dish.size }}</p>
+              <h3 class="content__dishes-offers-dish-content-title">
+                {{ dish.title }}
+              </h3>
+              <p class="content__dishes-offers-dish-content-size">
+                {{ dish.size }}
+              </p>
             </div>
             <div class="content__dishes-offers-dish-subscription">
-              <p class="content__dishes-offers-dish-ingredients">{{ dish.ingredients }}</p>
+              <p class="content__dishes-offers-dish-ingredients">
+                {{ dish.ingredients }}
+              </p>
               <p class="content__dishes-offers-dish-price">{{ dish.price }}</p>
             </div>
             <button class="content__dishes-offers-dish-button"></button>
           </article>
         </div>
-        <button v-if="showLoadMore" @click="loadMoreDishes" class="content__dishes-offers-btn">
+        <button
+          v-if="showLoadMore"
+          @click="loadMoreDishes"
+          class="content__dishes-offers-btn"
+        >
           Load More
         </button>
       </div>
@@ -56,37 +74,30 @@ export default {
       showLoadMore: false,
       categories: ["Pizza", "Sushi", "Salad", "Dessert", "Drinks"],
       selectedCategory: "Pizza",
+      basket: [],
     };
   },
   methods: {
     loadMoreDishes() {
-      const newDisplayedDishes = this.dishes.slice(
+      const categoryDishes = this.dishes[this.selectedCategory] || [];
+      const newDisplayedDishes = categoryDishes.slice(
         this.lastDisplayedIndex,
         this.lastDisplayedIndex + this.batchSize
       );
       this.displayedDishes = this.displayedDishes.concat(newDisplayedDishes);
       this.lastDisplayedIndex += this.batchSize;
 
-      if (this.lastDisplayedIndex >= this.dishes.length) {
+      if (this.lastDisplayedIndex >= categoryDishes.length) {
         this.showLoadMore = false;
       }
     },
     changeCategory(category) {
-    console.log("Chosen category", category)
+      console.log("Chosen category", category);
       this.selectedCategory = category;
-      this.displayedDishes = [];
-      this.lastDisplayedIndex = 0;
-      for (const dish of this.dishes) {
-        if (dish.category === category || !dish.category) {
-          if (this.displayedDishes.length < this.batchSize) {
-            this.displayedDishes.push(dish);
-          } else {
-            this.showLoadMore = true;
-            break;
-          }
-        }
-      }
+      const categoryKey = category.toLowerCase();
+      this.displayedDishes = this.dishes[categoryKey] || [];
       this.lastDisplayedIndex = this.displayedDishes.length;
+      this.showLoadMore = this.displayedDishes.length > this.batchSize;
     },
   },
   mounted() {
@@ -94,8 +105,13 @@ export default {
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           const dishData = doc.data();
-          console.log('Fetched dish:', dishData);
-          this.dishes.push(dishData);
+          console.log("Fetched dish:", dishData);
+          const category = dishData.type || "Other"; // type Firebase
+          const categoryKey = category.toLowerCase();
+          if (!this.dishes[categoryKey]) {
+            this.$set(this.dishes, categoryKey, []); //array for no category
+          }
+          this.dishes[categoryKey].push(dishData);
         });
         this.changeCategory(this.selectedCategory);
       })
@@ -106,89 +122,82 @@ export default {
 };
 </script>
 
-
-
-
-
 <style lang="scss" scoped>
-
 .content {
+  &__header {
+    margin-top: 8.7em;
+  }
 
-		&__header {
-                margin-top: 8.7em;
-		}
+  &__header-basket {
+    text-align: right;
+  }
 
-		&__header-basket {
-              text-align: right;
-		}
+  &__header-basket-btn {
+  }
 
-		&__header-basket-btn {
-		}
+  &__header-title {
+    text-align: center;
+  }
 
-		&__header-title {
-                text-align: center;
-		}
+  &__dishes {
+  }
 
-		&__dishes {
-		}
+  &__dishes-tabs {
+    text-align: center;
+  }
 
-		&__dishes-tabs {
-            text-align: center;
-		}
+  &__dishes-tabs-btn {
+  }
 
-		&__dishes-tabs-btn {
-		}
-
-		&__dishes-offers {
-             display: grid;
+  &__dishes-offers {
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 260px));
     gap: 2.5em;
-		}
+  }
 
-		&__dishes-offers-dish {
-		}
+  &__dishes-offers-dish {
+  }
 
-		&__dishes-offers-btn {
-		}
+  &__dishes-offers-btn {
+  }
 }
 .title {
-
 }
 .content__dishes-offers-dish {
-      border: 2px solid #ECEEF6;
-      max-width: 16.2em;
-      width: 100%;
-      padding: 2.2em 1em 2em 1.5em;
+  border: 2px solid #eceef6;
+  max-width: 16.2em;
+  width: 100%;
+  padding: 2.2em 1em 2em 1.5em;
 
-		&__img {
-            text-align: center;
-		}
+  &__img {
+    text-align: center;
+  }
 
-		&-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-		}
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-		&-content-title {
-		}
+  &-content-title {
+  }
 
-		&-content-size {
-		}
+  &-content-size {
+  }
 
-		&-subscription {
-            text-align: left;
-		}
+  &-subscription {
+    text-align: left;
+  }
 
-		&-ingredients {
-		}
+  &-ingredients {
+  }
 
-		&-price {
-            text-align: center;
-		}
+  &-price {
+    text-align: center;
+  }
 
-		&-button {
-             display: block;
+  &-button {
+    display: block;
     margin-left: auto;
     margin-right: auto;
     width: 2em;
@@ -199,14 +208,7 @@ export default {
     background-color: #ffffff;
     background-position: center;
     border-radius: 50%;
-		}
+    cursor: pointer;
+  }
 }
-
-
-
 </style>
-
-
-
-
-
