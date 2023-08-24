@@ -24,11 +24,11 @@ const dishesRef = collection(db, 'dishes');
 // Add data to Firebase
 // addDoc(dishesRef, {
 //   image: '/src/assets/img-dishes/dimare.png',
-//   title: 'Pizza Di Mare',
+//   title: 'Greek veg',
 //   size: '150 g',
 //   ingredients: 'Dough, Mozzarella, Cheddar, Parmesan, Seafood',
-//   price: '1000 UAH',
-//   type: 'pizza'
+//   price: '800 UAH',
+//   type: 'salad'
 // })
 // .then((docRef) => {
 //   console.log('Dish has been added', docRef.id);

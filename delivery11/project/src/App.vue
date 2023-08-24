@@ -2,23 +2,33 @@
   <div class="layout">
     <heading></heading>
     <main-content :dishesRef="dishesRef"></main-content>
-    
+    <slider></slider>
+    <contacts></contacts>
+    <footer></footer>
   </div>
 </template>
 
 <script>
 import Heading from "./components/Heading.vue";
 import MainContent from "./components/MainContent.vue";
-import { collection, getFirestore } from "firebase/firestore"; // Импорт необходимых функций Firestore
+import Slider from "./components/Slider.vue";
+import Contacts from "./components/Contacts.vue";
+import Footer from "./components/Footer.vue";
+
+
+import { collection, getFirestore } from "firebase/firestore"; // 
 
 export default {
   components: {
     Heading,
     MainContent,
+    Slider,
+    Contacts,
+    Footer,
   },
   data() {
     return {
-      dishesRef: collection(getFirestore(), "dishes"), // Создание dishesRef
+      dishesRef: collection(getFirestore(), "dishes"), //
     };
   },
 };

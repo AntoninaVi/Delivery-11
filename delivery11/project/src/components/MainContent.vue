@@ -198,6 +198,7 @@ export default {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 260px));
     gap: 2.5em;
+    margin-bottom: 6.5em;
   }
 
   &__dishes-offers-dish {
