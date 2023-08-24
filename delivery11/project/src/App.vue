@@ -4,8 +4,7 @@
     <main-content :dishesRef="dishesRef"></main-content>
     <slider></slider>
     <contacts></contacts>
-    <footer></footer>
-  </div>
+      </div>
 </template>
 
 <script>
@@ -13,10 +12,8 @@ import Heading from "./components/Heading.vue";
 import MainContent from "./components/MainContent.vue";
 import Slider from "./components/Slider.vue";
 import Contacts from "./components/Contacts.vue";
-import Footer from "./components/Footer.vue";
 
-
-import { collection, getFirestore } from "firebase/firestore"; // 
+import { collection, getFirestore } from "firebase/firestore"; //
 
 export default {
   components: {
@@ -24,7 +21,6 @@ export default {
     MainContent,
     Slider,
     Contacts,
-    Footer,
   },
   data() {
     return {
@@ -59,11 +55,10 @@ title {
   font-size: 48px;
   font-weight: 700;
   line-height: normal;
-     text-align: center;
+  text-align: center;
 }
 .logo {
   max-width: 7em;
   width: 100%;
 }
-
 </style>
