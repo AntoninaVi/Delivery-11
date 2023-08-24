@@ -8,13 +8,18 @@
           @mouseleave="isOrderSummaryVisible = false"
         >
           <button class="content__header-basket-btn">
-            Basket ({{ orderCount }})
+            <img
+              class="content__header-basket-btn-img"
+              src="../assets/img/bag.svg"
+              alt=""
+            />
+            ({{ orderCount }})
           </button>
           <div
             v-if="isOrderSummaryVisible"
             class="content__header-order-summary"
           >
-            Total: {{ totalOrderPrice }} UAH
+            = {{ totalOrderPrice }} ₴
             <button
               class="content__header-order-summary-close"
               @click="isOrderSummaryVisible = false"
@@ -24,7 +29,7 @@
           </div>
         </div>
 
-        <h1 class="content__header-title title">Popular dishes</h1>
+        <h2 class="content__header-title title">Popular dishes</h2>
       </div>
       <div class="content__dishes">
         <div class="content__dishes-tabs">
@@ -33,6 +38,7 @@
             :key="category"
             class="content__dishes-tabs-btn"
             @click="changeCategory(category)"
+            :class="{ active: category === activeCategory }"
           >
             {{ category }}
           </button>
@@ -115,6 +121,7 @@ export default {
       }
     },
     changeCategory(category) {
+      this.activeCategory = category;
       console.log("Chosen category", category);
       this.selectedCategory = category;
       const categoryKey = category.toLowerCase();
@@ -138,7 +145,7 @@ export default {
       this.orderCount += 1;
 
       // update sum
-      this.totalOrderPrice += parseFloat(dish.price.replace(" UAH", "")); 
+      this.totalOrderPrice += parseFloat(dish.price.replace(" UAH", ""));
       this.isOrderSummaryVisible = true; // show sum of an order
     },
   },
@@ -171,16 +178,43 @@ export default {
   }
 
   &__header-basket {
+    position: relative;
     text-align: right;
   }
 
   &__header-basket-btn {
+    border: none;
+    border-radius: 50%;
+    width: 5em;
+    height: 5em;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 18px 11px rgba(199, 197, 197, 0.3);
+    cursor: pointer;
+  }
+  &__header-basket-btn-img {
+    display: block;
+    width: 30px;
+    margin-right: auto;
+    margin-left: auto;
   }
   &__header-order-summary {
+    position: relative;
+    left: 83%;
+    bottom: 3em;
+    background-color: #3f3f3f;
+    padding: 1em;
+    max-width: 6em;
+    width: 100%;
+    text-align: left;
+    white-space: nowrap;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 9px;
   }
   &__header-order-summary-close {
   }
   &__header-title {
+    margin-bottom: 1em;
     text-align: center;
   }
 
@@ -188,10 +222,30 @@ export default {
   }
 
   &__dishes-tabs {
+    margin-bottom: 3.1em;
     text-align: center;
   }
 
   &__dishes-tabs-btn {
+    padding: 1em 3em;
+    margin-right: 1.9em;
+    border-radius: 45px;
+    background: linear-gradient(0deg, #eceef6 0%, #eceef6 100%), #59aaf1;
+    color: #151515;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 140%;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      color: #ffffff;
+      background: #59aaf1;
+      transition: ease-in 0.2s;
+    }
+    &.active {
+      background: #59aaf1;
+      color: #ffffff;
+    }
   }
 
   &__dishes-offers {

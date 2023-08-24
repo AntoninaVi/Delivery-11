@@ -3,7 +3,7 @@
     <div class="wrapper">
       <div class="container">
         <div class="contacts__content">
-          <h2 class="title">Fill out the form and we will call you</h2>
+          <h2 class="contacts__content-title title">Fill out the form and we will call you</h2>
           <form
             class="contacts__form"
             action=""
@@ -75,6 +75,14 @@
     margin-right: auto;
     text-align: center;
   }
+  &__content-title {
+
+  max-width: 10.5em;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.9em;
+}
 
   &__form {
     display: flex;
@@ -123,18 +131,7 @@
   &__img {
   }
 }
-.title {
-  color: #000;
-  text-align: center;
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 150%;
-  max-width: 10.5em;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 0.9em;
-}
+
 .footer {
   display: flex;
   justify-content: space-evenly;

@@ -49,7 +49,7 @@ body {
   margin-right: auto;
   margin-left: auto;
 }
-title {
+.title {
   color: #000;
   text-align: center;
   font-size: 48px;
