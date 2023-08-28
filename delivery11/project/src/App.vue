@@ -4,7 +4,7 @@
     <main-content :dishesRef="dishesRef"></main-content>
     <slider></slider>
     <contacts></contacts>
-      </div>
+  </div>
 </template>
 
 <script>
@@ -39,7 +39,7 @@ export default {
   box-sizing: border-box;
 }
 body {
-  color: black;
+  color: #000;
   font-size: 16px;
   font-family: "Montserrat", sans-serif;
   font-style: normal;

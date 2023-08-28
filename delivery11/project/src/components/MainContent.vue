@@ -13,19 +13,21 @@
               src="../assets/img/bag.svg"
               alt=""
             />
-            ({{ orderCount }})
+            <span class="content__header-basket-btn-order-count">{{
+              orderCount
+            }}</span>
           </button>
           <div
             v-if="isOrderSummaryVisible"
             class="content__header-order-summary"
           >
             = {{ totalOrderPrice }} ₴
-            <button
+            <!-- <button
               class="content__header-order-summary-close"
               @click="isOrderSummaryVisible = false"
             >
               &times;
-            </button>
+            </button> -->
           </div>
         </div>
 
@@ -172,6 +174,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.wrapper {
+  background-image: url(../assets/img/bg-dishes.png);
+  background-repeat: space;
+  background-size: cover;
+}
 .content {
   &__header {
     margin-top: 8.7em;
@@ -193,14 +200,14 @@ export default {
   }
   &__header-basket-btn-img {
     display: block;
-    width: 30px;
+    width: 4.5em;
     margin-right: auto;
     margin-left: auto;
   }
   &__header-order-summary {
-    position: relative;
+    position: absolute;
+    top: 0;
     left: 83%;
-    bottom: 3em;
     background-color: #3f3f3f;
     padding: 1em;
     max-width: 6em;
@@ -211,7 +218,17 @@ export default {
     font-size: 16px;
     border-radius: 9px;
   }
-  &__header-order-summary-close {
+  &__header-basket-btn-order-count {
+    position: absolute;
+    bottom: -0.5em;
+    right: 0;
+    background-color: #f58656;
+    border-radius: 50%;
+    color: #fff;
+    width: 1.8em;
+    height: 1.8em;
+    line-height: 24px;
+    font-weight: 600;
   }
   &__header-title {
     margin-bottom: 1em;
@@ -261,39 +278,63 @@ export default {
   &__dishes-offers-btn {
   }
 }
-.title {
-}
+
 .content__dishes-offers-dish {
   border: 2px solid #eceef6;
+  border-radius: 20px;
   max-width: 16.2em;
   width: 100%;
   padding: 2.2em 1em 2em 1.5em;
 
   &__img {
     text-align: center;
+    margin-bottom: 1.8em;
+    max-width: 10.5em;
+    width: 100%;
   }
 
   &-content {
     display: flex;
     align-items: center;
     justify-content: center;
+    white-space: nowrap;
+    margin-bottom: 0.5em;
   }
 
   &-content-title {
+    margin-right: 2.6em;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 140%;
   }
 
   &-content-size {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
   }
 
   &-subscription {
-    text-align: left;
   }
 
   &-ingredients {
+    text-align: left;
+    margin-bottom: 1.1em;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
   }
 
   &-price {
     text-align: center;
+    margin-bottom: 1.1em;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 140%;
+    color: #121146;
   }
 
   &-button {
