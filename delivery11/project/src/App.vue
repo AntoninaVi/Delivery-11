@@ -43,6 +43,7 @@ body {
   font-size: 16px;
   font-family: "Montserrat", sans-serif;
   font-style: normal;
+  overflow-x: hidden;
 }
 .container {
   max-width: 1160px;

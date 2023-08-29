@@ -18,6 +18,8 @@
   "homepage": "https://github.com/AntoninaVi/Delivery-11#readme",
   "dependencies": {
     "slick-carousel": "^1.8.1",
+    "swiper": "^8.4.7",
+    "vue-awesome-swiper": "^5.0.1",
     "vue-slick-carousel": "^1.0.6"
   }
 }

@@ -32,7 +32,7 @@
         <div class="main__img">
           <img
             class="main__img-image"
-            src=""
+            src="../assets/img/main-img.png"
             alt="pizza"
           />
         </div>
