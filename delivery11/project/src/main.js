@@ -23,12 +23,12 @@ const dishesRef = collection(db, 'dishes');
 
 // Add data to Firebase
 // addDoc(dishesRef, {
-//  image: '//img/car.png',
-//   title: 'Greek salad',
-//   size: '150 g',
-//   ingredients: 'Feta cheese, tomatoes, lettuce',
-//   price: '900 UAH',
-//   type: 'salad'
+//  image: '../assets/img/corn.png',
+//   title: 'Corn pizza small',
+//   size: '28 cm',
+//   ingredients: 'Dough, Mozzarella, Tomatoes, Corn, Ham, Pepper',
+//   price: '100 UAH',
+//   type: 'pizza'
 // })
 // .then((docRef) => {
 //   console.log('Dish has been added', docRef.id);

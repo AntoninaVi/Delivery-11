@@ -50,6 +50,7 @@
             v-for="(dish, index) in displayedDishes"
             :key="index"
             class="content__dishes-offers-dish"
+            v-show="index < visibleCount"
           >
             <img
               :src="dish.image"
@@ -78,11 +79,9 @@
         </div>
         <button
           v-if="showLoadMore"
-          @click="loadMoreDishes"
+          @click="toggleShowMore"
           class="content__dishes-offers-btn"
-        >
-          Load More
-        </button>
+        ></button>
       </div>
     </div>
   </div>
@@ -98,30 +97,20 @@ export default {
       dishes: [],
       displayedDishes: [],
       batchSize: 8,
-      lastDisplayedIndex: 0,
+      visibleCount: 8,
+
       showLoadMore: false,
       categories: ["Pizza", "Sushi", "Salad", "Dessert", "Drinks"],
       selectedCategory: "Pizza",
+      activeCategory: "",
       cart: [],
+
       orderCount: 0,
       totalOrderPrice: 0, // sum of an order
       isOrderSummaryVisible: false,
     };
   },
   methods: {
-    loadMoreDishes() {
-      const categoryDishes = this.dishes[this.selectedCategory] || [];
-      const newDisplayedDishes = categoryDishes.slice(
-        this.lastDisplayedIndex,
-        this.lastDisplayedIndex + this.batchSize
-      );
-      this.displayedDishes = this.displayedDishes.concat(newDisplayedDishes);
-      this.lastDisplayedIndex += this.batchSize;
-
-      if (this.lastDisplayedIndex >= categoryDishes.length) {
-        this.showLoadMore = false;
-      }
-    },
     changeCategory(category) {
       this.activeCategory = category;
       console.log("Chosen category", category);
@@ -149,6 +138,15 @@ export default {
       // update sum
       this.totalOrderPrice += parseFloat(dish.price.replace(" UAH", ""));
       this.isOrderSummaryVisible = true; // show sum of an order
+    },
+    toggleShowMore() {
+      if (this.visibleCount === 8) {
+        this.visibleCount = this.displayedDishes.length;
+        this.showMoreText = "Show Less";
+      } else {
+        this.visibleCount = 8;
+        this.showMoreText = "Load More";
+      }
     },
   },
   mounted() {
@@ -209,10 +207,10 @@ export default {
     top: 0;
     left: 83%;
     background-color: #3f3f3f;
-    padding: 1em;
+    padding: 1em 0.7em;
     max-width: 6em;
     width: 100%;
-    text-align: left;
+    text-align: center;
     white-space: nowrap;
     color: #ffffff;
     font-size: 16px;
@@ -236,6 +234,7 @@ export default {
   }
 
   &__dishes {
+    margin-bottom: 6.5em;
   }
 
   &__dishes-tabs {
@@ -272,31 +271,39 @@ export default {
     margin-bottom: 6.5em;
   }
 
-  &__dishes-offers-dish {
-  }
-
   &__dishes-offers-btn {
+    display: block;
+    width: 3.7em;
+    height: 3.7em;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(../assets/img/load-btn.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #f06428;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      transition: transform 0.3s ease-in;
+      transform: rotate(360deg);
+    }
   }
 }
 
+//Dish article
 .content__dishes-offers-dish {
+  position: relative;
   border: 2px solid #eceef6;
   border-radius: 20px;
   max-width: 16.2em;
   width: 100%;
   padding: 2.2em 1em 2em 1.5em;
 
-  &__img {
-    text-align: center;
-    margin-bottom: 1.8em;
-    max-width: 10.5em;
-    width: 100%;
-  }
-
   &-content {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     white-space: nowrap;
     margin-bottom: 0.5em;
   }
@@ -338,6 +345,10 @@ export default {
   }
 
   &-button {
+    position: absolute;
+    left: 8.9em;
+    bottom: -1em;
+    z-index: 2;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -351,5 +362,19 @@ export default {
     border-radius: 50%;
     cursor: pointer;
   }
+  &::after {
+    content: url(../assets/img/triagle.svg);
+    display: block;
+    position: absolute;
+    bottom: -1.7em;
+    left: 5.5em;
+    z-index: 1;
+  }
+}
+.content__dishes-offers-dish-img {
+  text-align: center;
+  margin-bottom: 1.8em;
+  max-width: 10.5em;
+  width: 100%;
 }
 </style>

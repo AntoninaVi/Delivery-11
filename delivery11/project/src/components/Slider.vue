@@ -1,6 +1,6 @@
 <template>
   <div class="slider">
-    <VueSlickCarousel v-bind="settings">
+    <VueSlickCarousel v-bind="settings" :autoplay="true">
       <div class="slide">
         <img src="../assets/img/slide2.png" alt="slide restaurant" />
       </div>
@@ -59,9 +59,10 @@ export default {
 .slider {
   position: relative;
   width: 100%;
-  max-width: 100vw;
+  max-width:95vw;
   margin-bottom: 7.9em;
   transform: scale(1.1);
+  overflow: hidden;
   .slide {
     height: 260px;
   }
@@ -85,9 +86,8 @@ export default {
     font-weight: 400;
     line-height: normal;
     background: linear-gradient(45deg, #fd9924 0%, #f65b16 100%);
-    box-shadow: 0px 20px 25px 0px rgba(253, 55, 36, 0.2),
-      0px 35px 50px 0px rgba(253, 55, 36, 0.2),
-      0px 70px 90px 0px rgba(253, 55, 36, 0.2);
+    box-shadow: 0px 20px 25px 0px rgba(253, 55, 10, 0.2);
+    
   }
   &__text-link {
     font-weight: 700;
