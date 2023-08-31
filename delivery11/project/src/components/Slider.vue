@@ -74,17 +74,19 @@ export default {
 .slider-contacts {
   position: absolute;
   top: 1em;
-  left: 39%;
-  width: 480px;
-  height: 180px;
+  left: 36%;
+  width: 100%;
+    max-width: 18.2em;
+  height: 11.2em;
   color: #fff;
   text-align: center;
   font-size: 24px;
   &__text {
-    padding: 75px 75px;
+    padding: 2.8em 2.8em;
     border-radius: 15px;
     font-weight: 400;
     line-height: normal;
+    white-space: nowrap;
     background: linear-gradient(45deg, #fd9924 0%, #f65b16 100%);
     box-shadow: 0px 20px 25px 0px rgba(253, 55, 10, 0.2);
     
