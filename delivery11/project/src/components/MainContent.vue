@@ -179,7 +179,7 @@ export default {
 }
 .content {
   &__header {
-    margin-top: 8.7em;
+    margin-top: 6.7em;
   }
 
   &__header-basket {
@@ -322,8 +322,6 @@ export default {
     line-height: 140%;
   }
 
-  &-subscription {
-  }
 
   &-ingredients {
     text-align: left;
@@ -366,7 +364,7 @@ export default {
     content: url(../assets/img/triagle.svg);
     display: block;
     position: absolute;
-    bottom: -1.7em;
+    bottom: -1.75em;
     left: 5.5em;
     z-index: 1;
   }

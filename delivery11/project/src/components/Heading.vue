@@ -48,10 +48,10 @@
   position: relative;
   background-image: url(../assets/img/bg-main.png);
   background-repeat: no-repeat;
-  background-position: top center;
+  background-position: 60% 30%;
   background-size: cover;
   padding-top: 1.5em;
-    height: 125vh;
+    height: 105vh;
 
 }
 .header {
@@ -117,7 +117,7 @@
     margin-left: auto;
   }
   &__img-image {
-    max-width: 62em;
+    max-width: 52em;
     width: 100%;
   }
 }

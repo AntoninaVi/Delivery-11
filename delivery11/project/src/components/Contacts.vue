@@ -103,6 +103,7 @@
     position: relative;
     max-width: 14.4em;
     width: 100%;
+     cursor: pointer;
     &::after {
       content: url(../assets/img/arrow.svg);
       display: block;
@@ -128,9 +129,8 @@
     border: none;
     cursor: pointer;
   }
-  &__img {
-  }
 }
+
 
 .footer {
   display: flex;
