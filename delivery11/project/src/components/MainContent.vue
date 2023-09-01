@@ -180,11 +180,28 @@ export default {
 .content {
   &__header {
     margin-top: 6.7em;
+    @media screen and (max-width: 412px) {
+      margin-top: 3em;
+    }
   }
 
   &__header-basket {
     position: relative;
     text-align: right;
+    @media screen and (max-width: 1100px) {
+      right: 9em;
+    }
+    @media screen and (max-width: 1100px) {
+      top: -1em;
+      right: 6em;
+    }
+    @media screen and (max-width: 500px) {
+      right: 4em;
+    }
+    @media screen and (max-width: 412px) {
+      transform: scale(0.7);
+       right: 0;
+    }
   }
 
   &__header-basket-btn {
@@ -215,6 +232,15 @@ export default {
     color: #ffffff;
     font-size: 16px;
     border-radius: 9px;
+    @media screen and (max-width: 1100px) {
+      left: 68%;
+    }
+    @media screen and (max-width: 500px) {
+      left: 54%;
+    }
+     @media screen and (max-width: 412px) {
+      left: 47%;
+    }
   }
   &__header-basket-btn-order-count {
     position: absolute;
@@ -238,8 +264,17 @@ export default {
   }
 
   &__dishes-tabs {
+    display: flex;
+    row-gap: 1em;
+    flex-wrap: wrap;
+    justify-content: center;
     margin-bottom: 3.1em;
     text-align: center;
+    @media screen and (max-width: 412px) {
+      display: grid;
+      grid-template-columns: 40% 40%;
+      gap: 0.8em;
+    }
   }
 
   &__dishes-tabs-btn {
@@ -262,12 +297,17 @@ export default {
       background: #59aaf1;
       color: #ffffff;
     }
+    @media screen and (max-width: 412px) {
+      margin-right: 0;
+          padding: 1em 0em;
+    }
   }
 
   &__dishes-offers {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 260px));
     gap: 2.5em;
+    justify-content: center;
     margin-bottom: 6.5em;
   }
 
@@ -321,7 +361,6 @@ export default {
     font-weight: 400;
     line-height: 140%;
   }
-
 
   &-ingredients {
     text-align: left;

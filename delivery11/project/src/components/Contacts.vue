@@ -3,7 +3,9 @@
     <div class="wrapper">
       <div class="container">
         <div class="contacts__content">
-          <h2 class="contacts__content-title title">Fill out the form and we will call you</h2>
+          <h2 class="contacts__content-title title">
+            Fill out the form and we will call you
+          </h2>
           <form
             class="contacts__form"
             action=""
@@ -66,8 +68,6 @@
   padding-top: 5em;
 }
 
-.container {
-}
 .contacts {
   &__content {
     display: block;
@@ -76,18 +76,21 @@
     text-align: center;
   }
   &__content-title {
-
-  max-width: 10.5em;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 0.9em;
-}
+    max-width: 10.5em;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.9em;
+  }
 
   &__form {
     display: flex;
     justify-content: center;
     align-items: center;
+    @media screen and (max-width: 820px) {
+      flex-direction: column;
+      row-gap: 2em;
+    }
   }
   &__form-input {
     padding: 20px 0 20px 30px;
@@ -98,12 +101,15 @@
     max-width: 19.5em;
     width: 100%;
     margin-right: 2em;
+    @media screen and (max-width: 820px) {
+      margin-right: 0;
+    }
   }
   &__form-btn {
     position: relative;
     max-width: 14.4em;
     width: 100%;
-     cursor: pointer;
+    cursor: pointer;
     &::after {
       content: url(../assets/img/arrow.svg);
       display: block;
@@ -129,19 +135,26 @@
     border: none;
     cursor: pointer;
   }
+  &__img {
+    max-width: 35em;
+    width: 100%;
+  }
 }
-
 
 .footer {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   padding-top: 2em;
-   padding-bottom: 3em;
+  padding-bottom: 3em;
   &__text {
   }
 
   &__logotype {
+  }
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    row-gap: 1em;
   }
 }
 </style>

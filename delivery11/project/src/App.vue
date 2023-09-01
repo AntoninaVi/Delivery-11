@@ -57,9 +57,22 @@ body {
   font-weight: 700;
   line-height: normal;
   text-align: center;
+  @media screen and (max-width: 540px) {
+    font-size: 36px;
+  }
+  @media screen and (max-width: 420px) {
+    font-size: 26px;
+  }
 }
 .logo {
   max-width: 7em;
   width: 100%;
+  @media screen and (max-width: 540px) {
+    transform: scale(0.8);
+  }
+  @media screen and (max-width: 412px) {
+    margin-top: -0.7em;
+    transform: scale(0.6);
+  }
 }
 </style>

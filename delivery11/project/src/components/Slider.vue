@@ -14,6 +14,12 @@
         <img src="../assets/img/slide2.png" alt="slide restaurant" />
       </div>
       <div class="slide">
+        <img src="../assets/img/slide2.png" alt="slide restaurant" />
+      </div>
+      <div class="slide">
+        <img src="../assets/img/slide3.png" alt="slide restaurant" />
+      </div>
+      <div class="slide">
         <img src="../assets/img/slide5.png" alt="slide restaurant" />
       </div>
       <div class="slide">
@@ -59,12 +65,19 @@ export default {
 .slider {
   position: relative;
   width: 100%;
-  max-width:95vw;
+  max-width: 95vw;
   margin-bottom: 7.9em;
   transform: scale(1.1);
   overflow: hidden;
+  white-space: nowrap;
+
   .slide {
     height: 260px;
+  }
+  @media screen and (max-width: 720px) {
+    height: 20vh;
+  }
+  @media screen and (max-width: 540px) {
   }
 }
 .slide img[data-v-2dedc691][data-v-2dedc691] {
@@ -73,26 +86,48 @@ export default {
 }
 .slider-contacts {
   position: absolute;
-  top: 1em;
-  left: 39%;
-  width: 480px;
-  height: 180px;
+  top: 0;
+  left: 0;
+  bottom: 1.5em;
+  right: 0;
+  z-index: 2;
+  max-width: 18.2em;
+  white-space: nowrap;
+  width: 100%;
+  margin: auto;
+  height: 6.85em;
+  border-radius: 15px;
   color: #fff;
   text-align: center;
-  font-size: 24px;
+  padding: 1em 1em;
+  background: linear-gradient(45deg, #fd9924 0%, #f65b16 100%);
+
   &__text {
-    padding: 75px 75px;
+    outline: 1px solid #fa985f;
+    padding: 1.8em 2em 1.8em 1.3em;
     border-radius: 15px;
     font-weight: 400;
     line-height: normal;
     background: linear-gradient(45deg, #fd9924 0%, #f65b16 100%);
-    box-shadow: 0px 20px 25px 0px rgba(253, 55, 10, 0.2);
-    
+    @media screen and (max-width: 320px) {
+      padding: 1em 0;
+    }
   }
   &__text-link {
     font-weight: 700;
     line-height: normal;
     color: #fff;
+  }
+  @media screen and (max-width: 540px) {
+    top: 1.5em;
+  }
+
+  @media screen and (max-width: 375px) {
+    transform: scale(0.8);
+  }
+  @media screen and (max-width: 320px) {
+    transform: scale(0.6);
+    padding: 1.8em 1em;
   }
 }
 </style>
