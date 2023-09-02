@@ -200,7 +200,7 @@ export default {
     }
     @media screen and (max-width: 412px) {
       transform: scale(0.7);
-       right: 0;
+      right: 0;
     }
   }
 
@@ -238,7 +238,7 @@ export default {
     @media screen and (max-width: 500px) {
       left: 54%;
     }
-     @media screen and (max-width: 412px) {
+    @media screen and (max-width: 412px) {
       left: 47%;
     }
   }
@@ -299,7 +299,7 @@ export default {
     }
     @media screen and (max-width: 412px) {
       margin-right: 0;
-          padding: 1em 0em;
+      padding: 1em 0em;
     }
   }
 
@@ -353,6 +353,7 @@ export default {
     font-size: 16px;
     font-weight: 600;
     line-height: 140%;
+    white-space: pre-line;
   }
 
   &-content-size {
@@ -409,7 +410,9 @@ export default {
   }
 }
 .content__dishes-offers-dish-img {
-  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 1.8em;
   max-width: 10.5em;
   width: 100%;

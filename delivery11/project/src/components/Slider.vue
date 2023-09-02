@@ -74,10 +74,9 @@ export default {
   .slide {
     height: 260px;
   }
-  @media screen and (max-width: 720px) {
-    height: 20vh;
-  }
-  @media screen and (max-width: 540px) {
+  @media screen and (max-width: 730px) {
+    height: 23vh;
+    margin-bottom: 3em;
   }
 }
 .slide img[data-v-2dedc691][data-v-2dedc691] {
@@ -88,14 +87,14 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 1.5em;
+  bottom: 0;
   right: 0;
   z-index: 2;
-  max-width: 18.2em;
+  max-width: 27.3em;
   white-space: nowrap;
   width: 100%;
   margin: auto;
-  height: 6.85em;
+  height: 10em;
   border-radius: 15px;
   color: #fff;
   text-align: center;
@@ -104,30 +103,28 @@ export default {
 
   &__text {
     outline: 1px solid #fa985f;
-    padding: 1.8em 2em 1.8em 1.3em;
+    padding: 3.5em 2em 3.5em 1.3em;
     border-radius: 15px;
     font-weight: 400;
     line-height: normal;
     background: linear-gradient(45deg, #fd9924 0%, #f65b16 100%);
-    @media screen and (max-width: 320px) {
-      padding: 1em 0;
-    }
   }
   &__text-link {
     font-weight: 700;
     line-height: normal;
     color: #fff;
   }
+
+  @media screen and (max-width: 1280px) {
+    bottom: 2em;
+  }
   @media screen and (max-width: 540px) {
-    top: 1.5em;
+    bottom: 0;
+    transform: scale(0.7);
   }
 
-  @media screen and (max-width: 375px) {
-    transform: scale(0.8);
-  }
-  @media screen and (max-width: 320px) {
-    transform: scale(0.6);
-    padding: 1.8em 1em;
+  @media screen and (max-width: 280px) {
+    padding: 1em 0.5em 1em 0.3em;
   }
 }
 </style>

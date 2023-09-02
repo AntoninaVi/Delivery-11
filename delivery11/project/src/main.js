@@ -23,12 +23,12 @@ const dishesRef = collection(db, 'dishes');
 
 // Add data to Firebase
 // addDoc(dishesRef, {
-//  image: '../assets/img/tiramisu.png',
-//   title: 'Tiramisu',
-//   size: '200 g',
-//   ingredients: 'Espresso, Mascarpone Cheese, Eggs, Sugar',
-//   price: '70 UAH',
-//   type: 'dessert'
+//  image: 'img/veg.png',
+//   title: 'Pizza Vegetarian small',
+//   size: '28 cm',
+//   ingredients: 'Fresh tomatoes, Onions, Eggplants, Bell peppers, Zucchini, Mushrooms',
+//   price: '95 UAH',
+//   type: 'pizza'
 // })
 // .then((docRef) => {
 //   console.log('Dish has been added', docRef.id);

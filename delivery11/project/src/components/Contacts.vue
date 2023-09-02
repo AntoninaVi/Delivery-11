@@ -147,11 +147,7 @@
   align-items: center;
   padding-top: 2em;
   padding-bottom: 3em;
-  &__text {
-  }
 
-  &__logotype {
-  }
   @media screen and (max-width: 600px) {
     flex-direction: column;
     row-gap: 1em;

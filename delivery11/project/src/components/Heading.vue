@@ -56,10 +56,9 @@ export default {
   },
   methods: {
     toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen; 
+      this.isMenuOpen = !this.isMenuOpen;
     },
   },
-  
 };
 </script>
 
@@ -75,9 +74,9 @@ export default {
   @media screen and (max-width: 920px) {
     height: 60vh;
   }
-   @media screen and (max-width: 500px) {
- padding-top: 0.5em;
-   }
+  @media screen and (max-width: 500px) {
+    padding-top: 0.5em;
+  }
 }
 .header {
   margin-bottom: 6.5em;
@@ -153,7 +152,7 @@ export default {
     @media screen and (max-width: 412px) {
       white-space: nowrap;
     }
-     @media screen and (max-width: 320px) {
+    @media screen and (max-width: 320px) {
       white-space: pre-line;
     }
   }
@@ -163,7 +162,6 @@ export default {
     line-height: 140%;
     @media screen and (max-width: 412px) {
       font-size: 15px;
-     
     }
   }
 
@@ -191,9 +189,9 @@ export default {
     margin-top: -1em;
     transform: scale(0.8);
   }
-    @media screen and (max-width: 320px){
-       margin-top: -3em;
-    }
+  @media screen and (max-width: 320px) {
+    margin-top: -3em;
+  }
 }
 
 .burger-menu {
