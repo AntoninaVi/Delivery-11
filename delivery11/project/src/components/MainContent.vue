@@ -339,6 +339,7 @@ export default {
   max-width: 16.2em;
   width: 100%;
   padding: 2.2em 1em 2em 1.5em;
+  height: 26.5em;
 
   &-content {
     display: flex;
@@ -384,7 +385,7 @@ export default {
 
   &-button {
     position: absolute;
-    left: 8.9em;
+    left: 8.85em;
     bottom: -1em;
     z-index: 2;
     display: block;
@@ -404,7 +405,7 @@ export default {
     content: url(../assets/img/triagle.svg);
     display: block;
     position: absolute;
-    bottom: -1.75em;
+    bottom: -1.73em;
     left: 5.5em;
     z-index: 1;
   }
@@ -416,5 +417,7 @@ export default {
   margin-bottom: 1.8em;
   max-width: 10.5em;
   width: 100%;
+  max-height: 10em;
+  height: 100%;
 }
 </style>
