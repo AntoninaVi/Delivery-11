@@ -129,7 +129,7 @@ export default {
         setTimeout(() => {
           this.isLoading = false;
         }, 200);
-      }, 800); 
+      }, 500); 
     },
     addDishToCart(dish) {
       this.cart.push(dish);
@@ -164,7 +164,7 @@ export default {
         this.changeCategory(this.selectedCategory);
         setTimeout(() => {
           this.isLoading = false;
-        }, 2000);
+        }, 1000);
       })
       .catch((error) => {
         console.error("Error getting dishes: ", error);
