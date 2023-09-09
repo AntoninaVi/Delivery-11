@@ -110,8 +110,6 @@ export default {
       this.isLoading = true;
       setTimeout(() => {
         this.activeCategory = category;
-
-        console.log("Chosen category", category);
         this.selectedCategory = category;
         const categoryKey = category.toLowerCase();
         this.displayedDishes = [];
