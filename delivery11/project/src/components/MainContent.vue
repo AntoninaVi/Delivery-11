@@ -130,8 +130,8 @@ export default {
         this.lastDisplayedIndex = this.displayedDishes.length;
         setTimeout(() => {
           this.isLoading = false;
-        }, 200); // 2000 миллисекунд = 2 секунды
-      }, 800); // 1500 миллисекунд = 1.5 секунды
+        }, 200);
+      }, 800); 
     },
     addDishToCart(dish) {
       this.cart.push(dish);
