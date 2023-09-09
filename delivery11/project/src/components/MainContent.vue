@@ -22,12 +22,6 @@
             class="content__header-order-summary"
           >
             = {{ totalOrderPrice }} ₴
-            <!-- <button
-              class="content__header-order-summary-close"
-              @click="isOrderSummaryVisible = false"
-            >
-              &times;
-            </button> -->
           </div>
         </div>
 
@@ -46,6 +40,7 @@
           </button>
         </div>
         <div class="content__dishes-offers">
+          <div v-if="isLoading" class="content__dishes-offers-loader"></div>
           <article
             v-for="(dish, index) in displayedDishes"
             :key="index"
@@ -98,7 +93,7 @@ export default {
       displayedDishes: [],
       batchSize: 8,
       visibleCount: 8,
-
+      isLoading: true,
       showLoadMore: false,
       categories: ["Pizza", "Sushi", "Salad", "Dessert", "Drinks"],
       selectedCategory: "Pizza",
@@ -112,24 +107,31 @@ export default {
   },
   methods: {
     changeCategory(category) {
-      this.activeCategory = category;
-      console.log("Chosen category", category);
-      this.selectedCategory = category;
-      const categoryKey = category.toLowerCase();
-      this.displayedDishes = [];
-      this.cart = []; // cart reset
-      this.displayedDishes = this.dishes[categoryKey] || [];
-      this.lastDisplayedIndex = this.displayedDishes.length;
-      this.showLoadMore = this.displayedDishes.length > this.batchSize;
-      for (const dish of this.dishes[category] || []) {
-        if (this.displayedDishes.length < this.batchSize) {
-          this.displayedDishes.push(dish);
-        } else {
-          this.showLoadMore = true;
-          break;
+      this.isLoading = true;
+      setTimeout(() => {
+        this.activeCategory = category;
+
+        console.log("Chosen category", category);
+        this.selectedCategory = category;
+        const categoryKey = category.toLowerCase();
+        this.displayedDishes = [];
+        this.cart = []; // cart reset
+        this.displayedDishes = this.dishes[categoryKey] || [];
+        this.lastDisplayedIndex = this.displayedDishes.length;
+        this.showLoadMore = this.displayedDishes.length > this.batchSize;
+        for (const dish of this.dishes[category] || []) {
+          if (this.displayedDishes.length < this.batchSize) {
+            this.displayedDishes.push(dish);
+          } else {
+            this.showLoadMore = true;
+            break;
+          }
         }
-      }
-      this.lastDisplayedIndex = this.displayedDishes.length;
+        this.lastDisplayedIndex = this.displayedDishes.length;
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 200); // 2000 миллисекунд = 2 секунды
+      }, 800); // 1500 миллисекунд = 1.5 секунды
     },
     addDishToCart(dish) {
       this.cart.push(dish);
@@ -154,7 +156,6 @@ export default {
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           const dishData = doc.data();
-          console.log("Fetched dish:", dishData);
           const category = dishData.type || "Other"; // type Firebase
           const categoryKey = category.toLowerCase();
           if (!this.dishes[categoryKey]) {
@@ -163,9 +164,13 @@ export default {
           this.dishes[categoryKey].push(dishData);
         });
         this.changeCategory(this.selectedCategory);
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 2000);
       })
       .catch((error) => {
         console.error("Error getting dishes: ", error);
+        this.isLoading = false;
       });
   },
 };
@@ -330,6 +335,34 @@ export default {
     }
   }
 }
+.content__dishes-offers {
+  position: relative;
+}
+.content__dishes-offers-loader {
+  position: absolute;
+  top: 10%;
+  left: 44%;
+  z-index: 5;
+  width: 7em;
+  height: 7em;
+  border: 5px solid;
+  border-color: #f09377 transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  @media screen and (max-width:540px) {
+    left: 37%;
+  }
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 //Dish article
 .content__dishes-offers-dish {
@@ -385,7 +418,7 @@ export default {
 
   &-button {
     position: absolute;
-    left: 8.85em;
+    left: 46%;
     bottom: -1em;
     z-index: 2;
     display: block;

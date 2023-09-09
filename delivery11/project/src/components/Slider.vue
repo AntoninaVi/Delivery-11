@@ -73,6 +73,7 @@ export default {
 
   .slide {
     height: 260px;
+    margin-left: 40px;
   }
   @media screen and (max-width: 730px) {
     height: 23vh;

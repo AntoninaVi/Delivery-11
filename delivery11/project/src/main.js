@@ -3,10 +3,6 @@ import App from './App.vue'
 import { initializeApp } from "firebase/app";
 import { getFirestore, orderBy, query, setDoc, collection, getDocs, addDoc, updateDoc } from  'firebase/firestore';
 
-// Import the functions you need from the SDKs you need
-
-
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBzu3bePwE18ZGi4J0veSLmldrZzpPmYhc",
