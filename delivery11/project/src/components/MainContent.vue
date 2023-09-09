@@ -345,8 +345,8 @@ export default {
   z-index: 5;
   width: 7em;
   height: 7em;
-  border: 5px solid;
-  border-color: #f09377 transparent;
+  border: 13px solid;
+  border-color: #f4965b transparent;
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
