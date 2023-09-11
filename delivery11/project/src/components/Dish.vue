@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     addToCartHandle() {
-      this.$emit("addToCart", this.dish); // calling the addToCart event
+      this.$emit("addToCart", this.dish); // calling addDishToCart(dish) event
     },
   },
 };
