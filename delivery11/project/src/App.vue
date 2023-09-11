@@ -1,7 +1,9 @@
 <template>
   <div class="layout">
     <heading></heading>
-    <main-content :dishesRef="dishesRef"></main-content>
+    <main-content :dishesRef="dishesRef">
+      <dish></dish>
+    </main-content>
     <slider></slider>
     <contacts></contacts>
   </div>
@@ -10,6 +12,7 @@
 <script>
 import Heading from "./components/Heading.vue";
 import MainContent from "./components/MainContent.vue";
+import Dish from "./components/Dish.vue";
 import Slider from "./components/Slider.vue";
 import Contacts from "./components/Contacts.vue";
 
@@ -19,6 +22,7 @@ export default {
   components: {
     Heading,
     MainContent,
+    Dish,
     Slider,
     Contacts,
   },

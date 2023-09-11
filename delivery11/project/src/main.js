@@ -1,5 +1,6 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import App from './App.vue';
+import Dish from './components/Dish.vue';
 import { initializeApp } from "firebase/app";
 import { getFirestore, orderBy, query, setDoc, collection, getDocs, addDoc, updateDoc } from  'firebase/firestore';
 
@@ -34,7 +35,8 @@ const dishesRef = collection(db, 'dishes');
 // });
 
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+Vue.component('Dish', Dish);
 
 new Vue({
   render: h => h(App),
