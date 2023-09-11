@@ -1,18 +1,18 @@
 <template>
-    <article class="content__dishes-offers-dish">
+  <article class="content__dishes-offers-dish">
     <img
-    :src="dish.image"
-        :alt="dish.title"
-        class="content__dishes-offers-dish-img"
+      :src="dish.image"
+      :alt="dish.title"
+      class="content__dishes-offers-dish-img"
     />
     <div class="content__dishes-offers-dish-content">
-        <h3 class="content__dishes-offers-dish-content-title">
+      <h3 class="content__dishes-offers-dish-content-title">
         {{ dish.title }}
-        </h3>
-        <p class="content__dishes-offers-dish-content-size">{{ dish.size }}</p>
+      </h3>
+      <p class="content__dishes-offers-dish-content-size">{{ dish.size }}</p>
     </div>
     <div class="content__dishes-offers-dish-subscription">
-        <p class="content__dishes-offers-dish-ingredients">
+      <p class="content__dishes-offers-dish-ingredients">
         {{ dish.ingredients }}
       </p>
       <p class="content__dishes-offers-dish-price">{{ dish.price }}</p>
@@ -26,22 +26,13 @@
 
 <script>
 import { getDocs } from "firebase/firestore";
-import MainContent from "./MainContent.vue";
+
 export default {
   props: {
     dish: {
       type: Object,
       required: true,
     },
-  },
-  data() {
-    return {
-      cart: [],
-
-      orderCount: 0,
-      totalOrderPrice: 0, // sum of an order
-      isOrderSummaryVisible: false,
-    };
   },
   methods: {
     addToCartHandle() {
