@@ -4,7 +4,7 @@ import Dish from './components/Dish.vue';
 import { initializeApp } from "firebase/app";
 import { getFirestore, orderBy, query, setDoc, collection, getDocs, addDoc, updateDoc } from  'firebase/firestore';
 
-// Your web app's Firebase configuration
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBzu3bePwE18ZGi4J0veSLmldrZzpPmYhc",
   authDomain: "delivery-restaurant-535a0.firebaseapp.com",
